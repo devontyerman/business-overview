@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kairos Financial | Build Your Life Insurance Career From Anywhere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue: #0071e3;
+      --blue-light: #40a0ff;
+      --blue-bg: #f0f5ff;
+      --blue-vibrant: #2997ff;
+      --purple: #6e5ce6;
+      --green: #30d158;
+      --orange: #ff9500;
+      --red: #ff3b30;
+      --pink: #ff2d55;
+      --white: #ffffff;
+      --off-white: #f5f5f7;
+      --gray-50: #fafafa;
+      --gray-100: #f2f2f7;
+      --gray-200: #e5e5ea;
+      --gray-300: #d1d1d6;
+      --gray-400: #aeaeb2;
+      --gray-500: #8e8e93;
+      --gray-600: #636366;
+      --gray-800: #3a3a3c;
+      --gray-900: #1d1d1f;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #86868b;
+      --gradient-blue: linear-gradient(135deg, #0071e3, #40a0ff);
+      --gradient-vibrant: linear-gradient(135deg, #2997ff, #6e5ce6);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announcement-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 110;
+      background: var(--gray-900);
+      padding: 1.1rem 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .announcement-bar .pulse-icon {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--red);
+      animation: pulse-dot 1.2s infinite; flex-shrink: 0;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,59,48,.5); }
+      50% { opacity: .7; box-shadow: 0 0 0 5px rgba(255,59,48,0); }
+    }
+    .announcement-bar .bar-text {
+      color: #fff; font-size: 1.05rem; font-weight: 700;
+    }
+    .announcement-bar .bar-text .highlight { color: var(--blue-light); }
+    .announcement-bar .bar-countdown {
+      display: flex; gap: .3rem; align-items: center;
+    }
+    .announcement-bar .bar-unit {
+      background: rgba(255,255,255,.15); border-radius: 6px; padding: .35rem .7rem;
+      font-size: 1.25rem; font-weight: 900; color: #fff; min-width: 42px;
+      text-align: center; font-variant-numeric: tabular-nums;
+    }
+    .announcement-bar .bar-sep { color: rgba(255,255,255,.4); font-size: 1.1rem; font-weight: 700; }
+    .spots-live {
+      color: var(--red); font-size: .95rem; font-weight: 700;
+      animation: fade-urgency 2s ease-in-out infinite;
+    }
+    @keyframes fade-urgency { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .announcement-bar .bar-cta {
+      background: var(--blue); color: #fff; font-weight: 700; font-size: .9rem;
+      padding: .45rem 1.1rem; border-radius: 100px; border: none; cursor: pointer;
+      transition: background .2s;
+    }
+    .announcement-bar .bar-cta:hover { background: var(--blue-light); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 52px; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--text); letter-spacing: -.3px; }
+    .nav-logo span { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue); color: #fff; font-weight: 600; font-size: .78rem;
+      padding: .4rem 1.2rem; border-radius: 100px; border: none; cursor: pointer;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: #005bb5; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 80px 1.5rem 80px;
+      background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
+      position: relative;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-text { }
+    .live-badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: rgba(255,59,48,.08); border: 1px solid rgba(255,59,48,.15);
+      padding: .35rem .9rem; border-radius: 100px; font-size: .72rem; font-weight: 600;
+      color: var(--red); margin-bottom: 1.2rem; letter-spacing: .3px;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+      animation: pulse-dot 1.5s infinite;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.08;
+      margin-bottom: 1.2rem; letter-spacing: -.02em;
+      background: linear-gradient(135deg, var(--text) 0%, var(--gray-600) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero h1 .blue {
+      background: var(--gradient-vibrant);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .subhead {
+      font-size: 1.12rem; color: var(--text-secondary); max-width: 500px;
+      margin-bottom: 2rem; line-height: 1.65;
+    }
+    .hero-image { position: relative; }
+    .hero-image img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.08);
+    }
+    .hero-image-overlay {
+      position: absolute; bottom: -16px; left: 24px;
+      background: var(--white); border-radius: 14px;
+      padding: 1rem 1.4rem; box-shadow: 0 8px 30px rgba(0,0,0,.08);
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .hero-image-overlay .stat-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(0,113,227,.1); display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .hero-image-overlay .stat-num { font-size: 1.3rem; font-weight: 900; color: var(--blue); }
+    .hero-image-overlay .stat-label { font-size: .68rem; color: var(--text-tertiary); }
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrap { margin-bottom: 2rem; }
+    .countdown-label {
+      font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-tertiary); margin-bottom: .6rem; font-weight: 600;
+    }
+    .countdown { display: flex; gap: .5rem; }
+    .countdown .unit {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 12px; padding: .6rem .9rem; min-width: 64px; text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .countdown .num {
+      font-size: 1.6rem; font-weight: 900; line-height: 1; color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown .lbl {
+      font-size: .55rem; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-tertiary); margin-top: .2rem;
+    }
+
+    /* ── BUTTONS ── */
+    .cta-btn {
+      display: inline-block; background: var(--blue); color: #fff;
+      font-weight: 700; font-size: 1.05rem; padding: 1rem 2.6rem; border-radius: 100px;
+      border: none; cursor: pointer; letter-spacing: -.01em;
+      transition: background .2s, transform .15s, box-shadow .2s; text-decoration: none;
+    }
+    .cta-btn:hover { background: #005bb5; transform: scale(1.02); box-shadow: 0 6px 24px rgba(0,113,227,.25); }
+    .cta-btn.large {
+      font-size: 1.15rem; padding: 1.15rem 3rem;
+    }
+    .cta-btn.outline {
+      background: transparent; border: 1.5px solid var(--blue); color: var(--blue);
+    }
+    .cta-btn.outline:hover { background: rgba(0,113,227,.06); }
+    .spots-note { margin-top: .7rem; font-size: .78rem; color: var(--red); font-weight: 600; }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 1.5rem; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-tag {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--blue);
+      font-weight: 700; margin-bottom: .5rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: .7rem;
+      letter-spacing: -.02em;
+    }
+    .section-sub {
+      color: var(--text-secondary); font-size: 1.05rem; max-width: 580px;
+      margin-bottom: 3rem; line-height: 1.65;
+    }
+    .section-sub.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-tag.center, .section-title.center { text-align: center; }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      background: var(--white); border-bottom: 1px solid var(--gray-200);
+      padding: 1rem 1.5rem;
+    }
+    .social-proof-inner {
+      max-width: 800px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .proof-stat { text-align: center; }
+    .proof-stat .number { font-size: 1.4rem; font-weight: 900; color: var(--text); }
+    .proof-stat .number .blue { color: var(--blue); }
+    .proof-stat .label { font-size: .68rem; color: var(--text-tertiary); letter-spacing: .5px; }
+
+    /* ── BENEFITS GRID ── */
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem;
+    }
+    .benefit-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 1.8rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .benefit-card:hover {
+      border-color: var(--blue); transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+    .benefit-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1rem;
+    }
+    .benefit-icon.blue-bg { background: rgba(0,113,227,.08); }
+    .benefit-icon.purple-bg { background: rgba(110,92,230,.08); }
+    .benefit-icon.green-bg { background: rgba(48,209,88,.08); }
+    .benefit-icon.orange-bg { background: rgba(255,149,0,.08); }
+    .benefit-icon.pink-bg { background: rgba(255,45,85,.08); }
+    .benefit-icon.teal-bg { background: rgba(0,199,190,.08); }
+    .benefit-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: .4rem; }
+    .benefit-card p { color: var(--text-secondary); font-size: .9rem; line-height: 1.6; }
+
+    /* ── CARRIER CAROUSEL ── */
+    .carrier-section { padding: 80px 1.5rem; background: var(--off-white); overflow: hidden; }
+    .carrier-track-wrapper {
+      position: relative;
+      mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+      margin-top: 2rem;
+    }
+    .carrier-track {
+      display: flex; gap: 3rem; align-items: center;
+      animation: carousel-scroll 40s linear infinite;
+      width: max-content;
+    }
+    .carrier-track:hover { animation-play-state: paused; }
+    @keyframes carousel-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carrier-item {
+      flex-shrink: 0;
+      font-size: 1rem; font-weight: 700; color: var(--gray-500);
+      white-space: nowrap; padding: .6rem 1.4rem;
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      transition: color .2s, border-color .2s;
+    }
+    .carrier-item:hover { color: var(--text); border-color: var(--gray-400); }
+
+    /* ── SPLIT SECTIONS ── */
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .split.reverse { direction: rtl; }
+    .split.reverse > * { direction: ltr; }
+    .split-image { border-radius: 20px; overflow: hidden; }
+    .split-image img { width: 100%; height: 380px; object-fit: cover; display: block; }
+    .split-text .section-tag { margin-bottom: .4rem; }
+    .split-text .section-title { margin-bottom: .8rem; font-size: clamp(1.5rem,3.5vw,2.2rem); }
+    .split-text p { color: var(--text-secondary); font-size: .98rem; line-height: 1.7; margin-bottom: 1.4rem; }
+    .check-list { list-style: none; margin-bottom: 1.8rem; }
+    .check-list li {
+      padding: .45rem 0; font-size: .92rem; color: var(--text-secondary);
+      display: flex; align-items: flex-start; gap: .55rem;
+    }
+    .check-list li::before {
+      content: ''; width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(0,113,227,.08); flex-shrink: 0; margin-top: .1rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230071e3'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+      background-size: 14px; background-position: center; background-repeat: no-repeat;
+    }
+
+    /* ── VIDEO SECTION ── */
+    .video-section {
+      position: relative; overflow: hidden;
+      padding: 0; min-height: 85vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-section video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+    }
+    .video-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.55) 0%,
+        rgba(0,0,0,.35) 40%,
+        rgba(0,0,0,.55) 100%
+      );
+    }
+    .video-content {
+      position: relative; z-index: 2; text-align: center;
+      max-width: 750px; padding: 3rem 1.5rem;
+    }
+    .video-content .section-tag {
+      color: var(--blue-light); margin-bottom: .6rem;
+      letter-spacing: 3px;
+    }
+    .video-content h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900;
+      color: #fff; margin-bottom: 1rem; letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+    .video-content p {
+      color: rgba(255,255,255,.8); font-size: 1.1rem;
+      max-width: 560px; margin: 0 auto 2rem; line-height: 1.7;
+    }
+    .video-content .cta-btn {
+      box-shadow: 0 8px 30px rgba(0,113,227,.35);
+    }
+    .video-stats {
+      display: flex; gap: 2.5rem; justify-content: center;
+      margin-top: 2.5rem; flex-wrap: wrap;
+    }
+    .video-stat { text-align: center; }
+    .video-stat .stat-num {
+      font-size: 2rem; font-weight: 900; color: #fff;
+    }
+    .video-stat .stat-label {
+      font-size: .75rem; color: rgba(255,255,255,.6);
+      text-transform: uppercase; letter-spacing: 1.5px; margin-top: .2rem;
+    }
+    .video-disclaimer {
+      font-size: .7rem; color: rgba(255,255,255,.4); margin-top: 2rem;
+      font-style: italic;
+    }
+    @media (max-width: 640px) {
+      .video-section { min-height: 70vh; }
+      .video-stats { gap: 1.5rem; }
+      .video-stat .stat-num { font-size: 1.5rem; }
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .comparison-section { padding: 100px 1.5rem; background: var(--off-white); }
+    .comparison-table {
+      max-width: 900px; margin: 0 auto;
+      border-radius: 20px; overflow: hidden;
+      background: var(--white); border: 1px solid var(--gray-200);
+      box-shadow: 0 4px 20px rgba(0,0,0,.04);
+    }
+    .comp-header {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .comp-header-cell {
+      padding: 1.2rem 1rem; text-align: center; font-weight: 800; font-size: .85rem;
+    }
+    .comp-header-cell:first-child { text-align: left; }
+    .comp-header-cell.highlight {
+      background: var(--blue); color: #fff;
+    }
+    .comp-row {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--gray-100);
+      transition: background .15s;
+    }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-row:hover { background: var(--gray-50); }
+    .comp-cell {
+      padding: .85rem 1rem; font-size: .82rem; display: flex;
+      align-items: center; justify-content: center; text-align: center;
+      color: var(--text-secondary); line-height: 1.4;
+    }
+    .comp-cell:first-child { justify-content: flex-start; font-weight: 600; color: var(--text); text-align: left; }
+    .comp-cell.highlight-col { background: rgba(0,113,227,.03); color: var(--blue); font-weight: 700; }
+
+    /* ── CRM SECTION ── */
+    .crm-section { padding: 100px 1.5rem; background: var(--white); }
+    .crm-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;
+    }
+    .crm-devices {
+      position: relative;
+      background: #0f0f1a;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,.15), 0 0 0 1px rgba(255,255,255,.04);
+      overflow: hidden;
+      animation: crm-float 4s ease-in-out infinite;
+    }
+    @keyframes crm-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* CRM UI */
+    .crm-ui-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .8rem 1rem; border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .crm-ui-title { color: #fff; font-size: .78rem; font-weight: 800; }
+    .crm-ui-badge {
+      background: rgba(48,209,88,.15); color: var(--green);
+      font-size: .55rem; font-weight: 700; padding: .15rem .45rem; border-radius: 4px;
+    }
+    .crm-ui-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem;
+      padding: .7rem .8rem;
+    }
+    .crm-stat-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 8px; padding: .5rem .4rem; text-align: center;
+    }
+    .crm-stat-label { font-size: .5rem; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .5px; }
+    .crm-stat-value { font-size: .95rem; font-weight: 900; color: #fff; }
+    .crm-stat-value.blue-text { color: var(--blue-vibrant); }
+    /* Pipeline */
+    .crm-pipeline {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem;
+      padding: 0 .8rem .6rem;
+    }
+    .pipeline-col { }
+    .pipeline-header {
+      font-size: .5rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .5px; color: #fff; padding: .3rem .5rem;
+      border-radius: 5px; margin-bottom: .4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .pipeline-header.new-bg { background: rgba(41,151,255,.25); color: var(--blue-vibrant); }
+    .pipeline-header.warm-bg { background: rgba(255,149,0,.2); color: var(--orange); }
+    .pipeline-header.hot-bg { background: rgba(48,209,88,.2); color: var(--green); }
+    .pipeline-count { opacity: .6; }
+    .pipeline-cards { display: flex; flex-direction: column; gap: .3rem; }
+    .pipeline-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 6px; padding: .35rem .45rem;
+      animation: card-pulse 3s ease-in-out infinite;
+    }
+    .pipeline-card:nth-child(2) { animation-delay: .5s; }
+    .pipeline-card:nth-child(3) { animation-delay: 1s; }
+    @keyframes card-pulse {
+      0%, 100% { border-color: rgba(255,255,255,.06); }
+      50% { border-color: rgba(255,255,255,.12); }
+    }
+    .pc-name { font-size: .55rem; font-weight: 700; color: rgba(255,255,255,.85); }
+    .pc-product { font-size: .45rem; color: rgba(255,255,255,.35); }
+    .pc-amount { font-size: .55rem; font-weight: 800; color: var(--blue-vibrant); margin-top: .15rem; }
+    /* Activity */
+    .crm-activity { border-top: 1px solid rgba(255,255,255,.06); }
+    .crm-activity-label {
+      font-size: .5rem; font-weight: 700; color: rgba(255,255,255,.35);
+      text-transform: uppercase; letter-spacing: .5px; padding: .5rem .8rem .2rem;
+    }
+    .crm-scroll-container { overflow: hidden; max-height: 120px; padding: 0 .8rem; }
+    .crm-scroll-track { animation: crm-scroll 14s linear infinite; }
+    @keyframes crm-scroll { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+    .crm-row {
+      display: flex; align-items: center; padding: .4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .crm-row-avatar {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--gradient-blue); margin-right: .5rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .45rem; font-weight: 800; color: #fff;
+    }
+    .crm-row-name { color: rgba(255,255,255,.8); font-size: .65rem; font-weight: 600; flex: 1; }
+    .crm-row-status {
+      font-size: .5rem; font-weight: 700; padding: .1rem .35rem; border-radius: 3px;
+    }
+    .crm-row-status.hot { background: rgba(48,209,88,.12); color: var(--green); }
+    .crm-row-status.warm { background: rgba(255,149,0,.12); color: var(--orange); }
+    .crm-row-status.new { background: rgba(41,151,255,.12); color: var(--blue-vibrant); }
+    .crm-row-amount {
+      font-size: .65rem; font-weight: 800; color: var(--blue-vibrant);
+      margin-left: .5rem; min-width: 44px; text-align: right;
+    }
+    .crm-text .section-tag { margin-bottom: .4rem; }
+    .crm-text .section-title { margin-bottom: .8rem; font-size: clamp(1.5rem,3.5vw,2.2rem); }
+    .crm-text p { color: var(--text-secondary); font-size: .98rem; line-height: 1.7; margin-bottom: 1.4rem; }
+
+    /* ── AI SALES TRAINING BOT ── */
+    .ai-bot-graphic { display: flex; align-items: center; justify-content: center; }
+    .ai-bot-container {
+      position: relative;
+      width: 100%; max-width: 480px;
+      background: #0f0f1a;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,.12), 0 0 80px rgba(41,151,255,.08);
+      padding: 2rem 1.5rem 1.5rem;
+      overflow: hidden;
+      animation: ai-glow 4s ease-in-out infinite;
+    }
+    @keyframes ai-glow {
+      0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,.12), 0 0 60px rgba(41,151,255,.06); }
+      50% { box-shadow: 0 20px 60px rgba(0,0,0,.12), 0 0 100px rgba(110,92,230,.12); }
+    }
+    .ai-neural-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .ai-node {
+      position: absolute; width: 6px; height: 6px;
+      background: rgba(41,151,255,.25); border-radius: 50%;
+      animation: ai-node-pulse 3s ease-in-out infinite;
+    }
+    .ai-node:nth-child(2) { animation-delay: .5s; background: rgba(110,92,230,.25); }
+    .ai-node:nth-child(3) { animation-delay: 1s; }
+    .ai-node:nth-child(4) { animation-delay: 1.5s; background: rgba(110,92,230,.25); }
+    .ai-node:nth-child(5) { animation-delay: 2s; }
+    .ai-node:nth-child(6) { animation-delay: 2.5s; background: rgba(110,92,230,.25); }
+    @keyframes ai-node-pulse {
+      0%, 100% { transform: scale(1); opacity: .4; }
+      50% { transform: scale(2.5); opacity: .8; }
+    }
+    .ai-brain-ring {
+      width: 90px; height: 90px; margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background: rgba(41,151,255,.06);
+      border: 1.5px solid rgba(41,151,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+      animation: ring-pulse 3s ease-in-out infinite;
+    }
+    @keyframes ring-pulse {
+      0%, 100% { border-color: rgba(41,151,255,.15); box-shadow: 0 0 0 0 rgba(41,151,255,0); }
+      50% { border-color: rgba(110,92,230,.3); box-shadow: 0 0 30px rgba(110,92,230,.1); }
+    }
+    .ai-brain-icon {
+      width: 60px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ai-chat-bubble {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: .7rem .9rem;
+      margin-bottom: .6rem;
+    }
+    .ai-bubble-left { margin-right: 15%; animation: bubble-fade-in .6s ease both; }
+    .ai-bubble-right { margin-left: 15%; animation: bubble-fade-in .6s ease .3s both; }
+    @keyframes bubble-fade-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .ai-bubble-label {
+      font-size: .5rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+      margin-bottom: .25rem;
+    }
+    .ai-bubble-left .ai-bubble-label { color: var(--blue-vibrant); }
+    .ai-bubble-right .ai-bubble-label { color: var(--purple); }
+    .ai-bubble-text {
+      font-size: .72rem; color: rgba(255,255,255,.7); line-height: 1.5; font-style: italic;
+    }
+    .ai-skill-tags {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-top: 1rem; position: relative; z-index: 1;
+      justify-content: center;
+    }
+    .ai-tag {
+      font-size: .55rem; font-weight: 700; padding: .25rem .6rem;
+      border-radius: 20px; letter-spacing: .3px;
+      background: rgba(41,151,255,.1); color: var(--blue-vibrant);
+      border: 1px solid rgba(41,151,255,.15);
+      animation: tag-float 3s ease-in-out infinite;
+    }
+    .ai-tag:nth-child(2) { animation-delay: .4s; background: rgba(110,92,230,.1); color: var(--purple); border-color: rgba(110,92,230,.15); }
+    .ai-tag:nth-child(3) { animation-delay: .8s; }
+    .ai-tag:nth-child(4) { animation-delay: 1.2s; background: rgba(110,92,230,.1); color: var(--purple); border-color: rgba(110,92,230,.15); }
+    @keyframes tag-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    /* ── STEPS ── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+      counter-reset: step;
+    }
+    .step {
+      padding: 2rem 1.8rem; background: var(--white);
+      border: 1px solid var(--gray-200); border-radius: 16px; text-align: center;
+      transition: box-shadow .2s;
+    }
+    .step:hover { box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 50%; margin: 0 auto 1rem;
+      background: var(--blue); color: #fff; font-weight: 900; font-size: 1rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 800; margin-bottom: .4rem; }
+    .step p { color: var(--text-secondary); font-size: .88rem; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.2rem;
+    }
+    .testimonial {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 1.8rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .testimonial:hover { box-shadow: 0 8px 30px rgba(0,0,0,.06); transform: translateY(-2px); }
+    .testimonial .stars { color: var(--orange); font-size: .9rem; margin-bottom: .7rem; letter-spacing: 1px; }
+    .testimonial blockquote {
+      font-size: .9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .testimonial .author { display: flex; align-items: center; gap: .7rem; }
+    .testimonial .avatar {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--gradient-blue);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #fff; font-size: .75rem;
+    }
+    .testimonial .name { font-weight: 700; font-size: .85rem; }
+    .testimonial .role { font-size: .72rem; color: var(--text-tertiary); }
+
+    /* ── URGENCY ── */
+    .urgency-banner {
+      background: var(--gray-900); padding: 60px 1.5rem; text-align: center;
+    }
+    .urgency-banner h2 { font-size: clamp(1.3rem,3.5vw,2rem); font-weight: 900; color: #fff; margin-bottom: .5rem; }
+    .urgency-banner p { color: rgba(255,255,255,.55); margin-bottom: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--gray-200); padding: 1.1rem 0; }
+    .faq-q {
+      font-weight: 700; cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; font-size: .95rem; user-select: none;
+    }
+    .faq-q .arrow { transition: transform .3s; font-size: .7rem; color: var(--blue); flex-shrink: 0; margin-left: 1rem; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+      color: var(--text-secondary); font-size: .9rem; line-height: 1.7;
+    }
+    .faq-a.open { max-height: 300px; padding-top: .7rem; }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      text-align: center; padding: 100px 1.5rem;
+      background: linear-gradient(180deg, var(--off-white), var(--white));
+    }
+    .final-cta h2 { font-size: clamp(1.6rem,4vw,2.6rem); font-weight: 900; margin-bottom: .7rem; }
+    .final-cta p { color: var(--text-secondary); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; font-size: 1.02rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 1.5rem;
+      border-top: 1px solid var(--gray-200);
+      color: var(--text-tertiary); font-size: .72rem;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.3); backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 20px; padding: 2.5rem;
+      max-width: 440px; width: 90%; position: relative; text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,.15);
+    }
+    .modal-close {
+      position: absolute; top: .8rem; right: 1rem; background: none;
+      border: none; color: var(--text-tertiary); font-size: 1.3rem; cursor: pointer;
+    }
+    .modal h2 { font-size: 1.4rem; font-weight: 900; margin-bottom: .4rem; }
+    .modal p { color: var(--text-secondary); font-size: .88rem; margin-bottom: 1.3rem; }
+    .modal .cta-btn { width: 100%; text-align: center; }
+    .modal .fine { font-size: .7rem; color: var(--text-tertiary); margin-top: .8rem; }
+
+    /* ── FLOATING BAR ── */
+    .floating-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      background: rgba(255,255,255,.8); backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-top: 1px solid rgba(0,0,0,.06);
+      padding: .6rem 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      transform: translateY(100%); transition: transform .3s;
+    }
+    .floating-bar.visible { transform: translateY(0); }
+    .floating-bar .timer-mini { font-size: .82rem; font-weight: 700; color: var(--text); }
+    .floating-bar .cta-btn { padding: .5rem 1.4rem; font-size: .8rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .announcement-bar { gap: .4rem; padding: .6rem .5rem; }
+      .announcement-bar .bar-text { font-size: .7rem; }
+      .announcement-bar .bar-unit { font-size: .8rem; min-width: 28px; }
+      nav { top: 46px; }
+      .hero { padding-top: 120px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+      .hero-image { display: none; }
+      .countdown { justify-content: center; }
+      .hero .subhead { margin-left: auto; margin-right: auto; }
+      .split { grid-template-columns: 1fr; gap: 2rem; }
+      .split.reverse { direction: ltr; }
+      .split-image img { height: 240px; }
+      .crm-inner { grid-template-columns: 1fr; }
+      .crm-pipeline { grid-template-columns: repeat(3, 1fr); gap: .3rem; }
+      .comp-header, .comp-row { grid-template-columns: 1.2fr 1fr 1fr 1fr; }
+      .comp-cell { padding: .7rem .5rem; font-size: .78rem; }
+      .map-agent-pin { width: 28px; height: 28px; font-size: .5rem; }
+    }
+    @media (max-width: 640px) {
+      .countdown .unit { min-width: 54px; padding: .5rem .6rem; }
+      .countdown .num { font-size: 1.3rem; }
+      .floating-bar { flex-direction: column; gap: .4rem; padding: .5rem .8rem; }
+      nav { padding: 0 1rem; }
+      .spots-live { display: none; }
+      .comp-header-cell, .comp-cell { padding: .6rem .35rem; font-size: .7rem; }
+      .comp-header-cell.highlight .rec-badge { font-size: .45rem; top: -8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  <div class="pulse-icon"></div>
+  <span class="bar-text">Business Overview <span class="highlight">Monday 8 PM EST</span></span>
+  <div class="bar-countdown">
+    <div class="bar-unit" id="bar-days">00</div><span class="bar-sep">:</span>
+    <div class="bar-unit" id="bar-hours">00</div><span class="bar-sep">:</span>
+    <div class="bar-unit" id="bar-mins">00</div><span class="bar-sep">:</span>
+    <div class="bar-unit" id="bar-secs">00</div>
+  </div>
+  <span class="spots-live">Only 7 spots left!</span>
+  <button class="bar-cta" onclick="openModal()">Register Now</button>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="live-badge"><span class="live-dot"></span> Live Every Monday at 8 PM EST</div>
+      <h1>Build a <span class="blue">Six-Figure Life Insurance Business</span> From Anywhere</h1>
+      <p class="subhead">Join our free Business Overview this Monday and learn how agents across the country are building thriving remote careers &mdash; no cold calling required.</p>
+      <div class="countdown-wrap">
+        <div class="countdown-label">Next overview starts in</div>
+        <div class="countdown" id="countdown">
+          <div class="unit"><div class="num" id="cd-days">0</div><div class="lbl">Days</div></div>
+          <div class="unit"><div class="num" id="cd-hours">0</div><div class="lbl">Hours</div></div>
+          <div class="unit"><div class="num" id="cd-mins">0</div><div class="lbl">Minutes</div></div>
+          <div class="unit"><div class="num" id="cd-secs">0</div><div class="lbl">Seconds</div></div>
+        </div>
+      </div>
+      <button class="cta-btn large" onclick="openModal()">Reserve Your Spot Now</button>
+      <p class="spots-note">Limited to 50 spots &mdash; only a few remaining!</p>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Remote team working">
+      <div class="hero-image-overlay">
+        <div class="stat-icon">&#127968;</div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Fully Remote</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits" style="padding-top: 60px;">
+  <div class="section-inner">
+    <div class="section-tag center">Why Agents Choose Kairos</div>
+    <h2 class="section-title center">A Career Built on Your Terms</h2>
+    <p class="section-sub center">Real income, real freedom, and real support &mdash; without the grind of traditional sales.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon blue-bg">&#127968;</div><h3>100% Fully Remote</h3><p>Work from home, a coffee shop, or the beach. No office commute, no territory restrictions.</p></div>
+      <div class="benefit-card"><div class="benefit-icon green-bg">&#128176;</div><h3>High Commission Levels</h3><p>Our comp structure helps agents hit top tiers faster than anywhere else in the industry.</p></div>
+      <div class="benefit-card"><div class="benefit-icon purple-bg">&#128200;</div><h3>Own Your Own Business</h3><p>You're not an employee &mdash; you're a business owner. Build equity and scale at your pace.</p></div>
+      <div class="benefit-card"><div class="benefit-icon orange-bg">&#127919;</div><h3>High-Intent Leads Only</h3><p>No cold calling. Work with people who already raised their hand and asked for help.</p></div>
+      <div class="benefit-card"><div class="benefit-icon pink-bg">&#128101;</div><h3>Mentorship &amp; Community</h3><p>Get paired with top-performing mentors. Weekly trainings, live coaching, and a team behind you.</p></div>
+      <div class="benefit-card"><div class="benefit-icon teal-bg">&#9879;&#65039;</div><h3>Control Your Lead Flow</h3><p>You decide how many leads you work, when you work them, and how fast you scale.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIER CAROUSEL -->
+<section class="carrier-section">
+  <div class="section-inner">
+    <div class="section-tag center">Our Carrier Partners</div>
+    <h2 class="section-title center">Access 20+ Top-Rated Insurance Carriers</h2>
+    <p class="section-sub center">As an independent broker, you're never locked into one company. Find the best product for every client &mdash; and earn the best commission every time.</p>
+    <div class="carrier-track-wrapper">
+      <div class="carrier-track" id="carrierTrack">
+        <div class="carrier-item">Mutual of Omaha</div>
+        <div class="carrier-item">Americo</div>
+        <div class="carrier-item">Transamerica</div>
+        <div class="carrier-item">AmAm</div>
+        <div class="carrier-item">Corebridge</div>
+        <div class="carrier-item">Ladder</div>
+        <div class="carrier-item">Chubb</div>
+        <div class="carrier-item">Ameritas</div>
+        <div class="carrier-item">Ethos</div>
+        <div class="carrier-item">Aetna</div>
+        <div class="carrier-item">Banner / LGA</div>
+        <div class="carrier-item">SBLI</div>
+        <div class="carrier-item">AHL</div>
+        <div class="carrier-item">F&amp;G</div>
+        <div class="carrier-item">GTL</div>
+        <div class="carrier-item">KCL</div>
+        <div class="carrier-item">Royal Neighbors</div>
+        <div class="carrier-item">CICA</div>
+        <div class="carrier-item">Baltimore Life</div>
+        <div class="carrier-item">Foresters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="comparison-section">
+  <div class="section-inner">
+    <div class="section-tag center">See the Difference</div>
+    <h2 class="section-title center">Not All Brokerages Are Created Equal</h2>
+    <p class="section-sub center">See how Kairos Financial stacks up against captive agencies and other independent brokerages.</p>
+    <div class="comparison-table">
+      <div class="comp-header">
+        <div class="comp-header-cell"></div>
+        <div class="comp-header-cell highlight">Kairos Financial</div>
+        <div class="comp-header-cell">Captive Agency</div>
+        <div class="comp-header-cell">Other Independent</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Book of Business</div>
+        <div class="comp-cell highlight-col">You own it 100%</div>
+        <div class="comp-cell">Company owns it</div>
+        <div class="comp-cell">You own it</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Compensation</div>
+        <div class="comp-cell highlight-col">Top-tier commissions</div>
+        <div class="comp-cell">Low, capped rates</div>
+        <div class="comp-cell">Varies widely</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Carrier Access</div>
+        <div class="comp-cell highlight-col">20+ top carriers</div>
+        <div class="comp-cell">One company only</div>
+        <div class="comp-cell">Multiple carriers</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Work Location</div>
+        <div class="comp-cell highlight-col">100% remote, anywhere</div>
+        <div class="comp-cell">Office required</div>
+        <div class="comp-cell">Depends on agency</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Training &amp; Mentorship</div>
+        <div class="comp-cell highlight-col">Dedicated 1:1 mentor</div>
+        <div class="comp-cell">Generic group training</div>
+        <div class="comp-cell">Mostly self-guided</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Lead Generation</div>
+        <div class="comp-cell highlight-col">Full control, your choice</div>
+        <div class="comp-cell">Restricted, company-assigned</div>
+        <div class="comp-cell">You're on your own</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Technology &amp; CRM</div>
+        <div class="comp-cell highlight-col">Custom in-house CRM</div>
+        <div class="comp-cell">Outdated company tools</div>
+        <div class="comp-cell">No CRM provided</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell">Ongoing Coaching</div>
+        <div class="comp-cell highlight-col">Weekly live sessions</div>
+        <div class="comp-cell">Occasional meetings</div>
+        <div class="comp-cell">Rare or none</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REMOTE SPLIT -->
+<section>
+  <div class="section-inner">
+    <div class="split">
+      <div class="split-image">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Team collaboration">
+      </div>
+      <div class="split-text">
+        <div class="section-tag">Work From Anywhere</div>
+        <h2 class="section-title">Your Office Is Wherever You Are</h2>
+        <p>No mandatory office hours, no territory restrictions. Our agents work from all 50 states &mdash; and anywhere in the world with an internet connection. Set your own schedule and build a real business on your own terms.</p>
+        <ul class="check-list">
+          <li>No commute &mdash; reclaim hours of your day</li>
+          <li>Work from home, a coffee shop, or a beach overseas</li>
+          <li>All you need is a laptop and Wi-Fi &mdash; sell from anywhere on the planet</li>
+          <li>All training and mentorship delivered virtually</li>
+          <li>Full support from a nationwide (and global) team</li>
+        </ul>
+        <button class="cta-btn" onclick="openModal()">Learn More Monday at 8 PM</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRM SECTION -->
+<section class="crm-section" style="background:var(--off-white);">
+  <div class="crm-inner">
+    <div class="crm-text">
+      <div class="section-tag">Built-In Technology</div>
+      <h2 class="section-title">Our In-House CRM Does the Heavy Lifting</h2>
+      <p>Forget juggling spreadsheets and third-party apps. Track leads, manage follow-ups, and close deals all from one place &mdash; desktop or mobile.</p>
+      <ul class="check-list">
+        <li>Lead management &amp; automated follow-ups</li>
+        <li>Pipeline tracking with real-time analytics</li>
+        <li>Works on desktop and mobile &mdash; sell from anywhere</li>
+        <li>Built by agents, for agents &mdash; no bloated software</li>
+      </ul>
+      <button class="cta-btn" onclick="openModal()">See It In Action &mdash; Register Free</button>
+    </div>
+    <div class="crm-devices">
+      <!-- Header -->
+      <div class="crm-ui-header">
+        <div class="crm-ui-title">Kairos CRM</div>
+        <div class="crm-ui-badge">Live</div>
+      </div>
+      <!-- Stats -->
+      <div class="crm-ui-stats">
+        <div class="crm-stat-card"><div class="crm-stat-label">Active Leads</div><div class="crm-stat-value" id="crm-leads">47</div></div>
+        <div class="crm-stat-card"><div class="crm-stat-label">This Month</div><div class="crm-stat-value blue-text" id="crm-revenue">$12,840</div></div>
+        <div class="crm-stat-card"><div class="crm-stat-label">Close Rate</div><div class="crm-stat-value">34%</div></div>
+      </div>
+      <!-- Pipeline cards -->
+      <div class="crm-pipeline">
+        <div class="pipeline-col">
+          <div class="pipeline-header new-bg">New <span class="pipeline-count">8</span></div>
+          <div class="pipeline-cards" id="pipelineNew">
+            <div class="pipeline-card"><div class="pc-name">Sarah M.</div><div class="pc-product">Term Life</div><div class="pc-amount">$4,200</div></div>
+            <div class="pipeline-card"><div class="pc-name">Lisa P.</div><div class="pc-product">IUL</div><div class="pc-amount">$3,500</div></div>
+            <div class="pipeline-card"><div class="pc-name">Tyler N.</div><div class="pc-product">Term Life</div><div class="pc-amount">$3,200</div></div>
+          </div>
+        </div>
+        <div class="pipeline-col">
+          <div class="pipeline-header warm-bg">Contacted <span class="pipeline-count">12</span></div>
+          <div class="pipeline-cards" id="pipelineContacted">
+            <div class="pipeline-card"><div class="pc-name">James D.</div><div class="pc-product">Whole Life</div><div class="pc-amount">$2,800</div></div>
+            <div class="pipeline-card"><div class="pc-name">Angela W.</div><div class="pc-product">Whole Life</div><div class="pc-amount">$1,900</div></div>
+            <div class="pipeline-card"><div class="pc-name">Kevin C.</div><div class="pc-product">Term Life</div><div class="pc-amount">$2,100</div></div>
+          </div>
+        </div>
+        <div class="pipeline-col">
+          <div class="pipeline-header hot-bg">Closing <span class="pipeline-count">5</span></div>
+          <div class="pipeline-cards" id="pipelineClosing">
+            <div class="pipeline-card"><div class="pc-name">Robert G.</div><div class="pc-product">Term Life</div><div class="pc-amount">$5,100</div></div>
+            <div class="pipeline-card"><div class="pc-name">Maria R.</div><div class="pc-product">IUL</div><div class="pc-amount">$6,400</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- Scrolling activity feed -->
+      <div class="crm-activity">
+        <div class="crm-activity-label">Recent Activity</div>
+        <div class="crm-scroll-container">
+          <div class="crm-scroll-track" id="crmScrollTrack">
+            <div class="crm-row"><div class="crm-row-avatar">SM</div><div class="crm-row-name">Sarah Mitchell</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$4,200</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">JD</div><div class="crm-row-name">James Donovan</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$2,800</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">LP</div><div class="crm-row-name">Lisa Park</div><div class="crm-row-status new">New</div><div class="crm-row-amount">$3,500</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">RG</div><div class="crm-row-name">Robert Garcia</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$5,100</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">AW</div><div class="crm-row-name">Angela Wright</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$1,900</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">TN</div><div class="crm-row-name">Tyler Nguyen</div><div class="crm-row-status new">New</div><div class="crm-row-amount">$3,200</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">MR</div><div class="crm-row-name">Maria Rodriguez</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$6,400</div></div>
+            <div class="crm-row"><div class="crm-row-avatar">KC</div><div class="crm-row-name">Kevin Chen</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$2,100</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SALES TRAINING BOT -->
+<section style="background:var(--off-white);">
+  <div class="section-inner">
+    <div class="split">
+      <div class="split-text">
+        <div class="section-tag">AI-Powered Training</div>
+        <h2 class="section-title">Your Personal AI Sales Coach</h2>
+        <p>Every Kairos agent gets free access to our AI Sales Training Bot &mdash; a virtual coach that helps you master objection handling, product knowledge, and closing techniques 24/7.</p>
+        <ul class="check-list">
+          <li>Practice real sales scenarios with instant AI feedback</li>
+          <li>Master objection handling before you ever get on a call</li>
+          <li>Get product knowledge answers in seconds, not hours</li>
+          <li>Train anytime &mdash; nights, weekends, at your own pace</li>
+          <li>100% free for all Kairos agents</li>
+        </ul>
+        <button class="cta-btn" onclick="openModal()">Get Access &mdash; Register Free</button>
+      </div>
+      <div class="ai-bot-graphic">
+        <div class="ai-bot-container">
+          <!-- Neural network background -->
+          <div class="ai-neural-bg">
+            <div class="ai-node" style="top:12%;left:18%"></div>
+            <div class="ai-node" style="top:28%;left:72%"></div>
+            <div class="ai-node" style="top:55%;left:25%"></div>
+            <div class="ai-node" style="top:70%;left:68%"></div>
+            <div class="ai-node" style="top:40%;left:50%"></div>
+            <div class="ai-node" style="top:85%;left:40%"></div>
+          </div>
+          <!-- Central brain icon -->
+          <div class="ai-brain-ring">
+            <div class="ai-brain-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+                <path d="M32 8c-6 0-11 3-14 8-4 2-7 7-7 12 0 5 2 9 6 12 0 6 4 11 9 13 2 1 4 2 6 2s4-1 6-2c5-2 9-7 9-13 4-3 6-7 6-12 0-5-3-10-7-12C43 11 38 8 32 8z" stroke="url(#brain-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M32 8v48M18 16c4 6 10 10 14 10s10-4 14-10M11 28h42M18 48c4-6 10-10 14-10s10 4 14 10" stroke="url(#brain-grad)" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+                <defs><linearGradient id="brain-grad" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#2997ff"/><stop offset="1" stop-color="#6e5ce6"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <!-- Chat bubbles -->
+          <div class="ai-chat-bubble ai-bubble-left">
+            <div class="ai-bubble-label">You</div>
+            <div class="ai-bubble-text">"How do I handle the 'I need to think about it' objection?"</div>
+          </div>
+          <div class="ai-chat-bubble ai-bubble-right">
+            <div class="ai-bubble-label">AI Coach</div>
+            <div class="ai-bubble-text">"Great question — try the feel-felt-found method: 'I understand how you feel...'"</div>
+          </div>
+          <!-- Floating skill tags -->
+          <div class="ai-skill-tags">
+            <span class="ai-tag">Objection Handling</span>
+            <span class="ai-tag">Product Knowledge</span>
+            <span class="ai-tag">Closing Scripts</span>
+            <span class="ai-tag">IUL Explained</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <div class="section-tag center">How It Works</div>
+    <h2 class="section-title center">3 Steps to Get Started</h2>
+    <p class="section-sub center">From registering to writing your first policy &mdash; we make it simple.</p>
+    <div class="steps-grid">
+      <div class="step"><h3>Register for the Overview</h3><p>Click the button and pick a time. Takes 30 seconds. Completely free, no obligation.</p></div>
+      <div class="step"><h3>Attend Monday at 8 PM EST</h3><p>Learn about the opportunity, our systems, comp plan, and how our agents are building real income.</p></div>
+      <div class="step"><h3>Start Building Your Business</h3><p>If it's a fit, get licensed in about 3 weeks and onboard with your mentor and first leads ready to go.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENTORSHIP SPLIT -->
+<section style="background:var(--off-white);">
+  <div class="section-inner">
+    <div class="split reverse">
+      <div class="split-image">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Mentorship and coaching">
+      </div>
+      <div class="split-text">
+        <div class="section-tag">Learn From the Best</div>
+        <h2 class="section-title">Work Side by Side With Top Performers</h2>
+        <p>From day one, you're paired with a mentor who has already built what you're trying to build. Live coaching, proven scripts, and a team that celebrates your wins.</p>
+        <ul class="check-list">
+          <li>1-on-1 mentorship with six-figure earners</li>
+          <li>Weekly live training and role-play sessions</li>
+          <li>Proven sales systems &mdash; no guesswork</li>
+          <li>A community that pushes you to grow</li>
+        </ul>
+        <button class="cta-btn" onclick="openModal()">See How It Works &mdash; Register Free</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-tag center">Real Results</div>
+    <h2 class="section-title center">What Our Agents Are Saying</h2>
+    <p class="section-sub center">Don't take our word for it &mdash; hear from agents who made the move.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"I was stuck at a 9-to-5 making $55K. Within 6 months at Kairos, I passed six figures working from my apartment."</blockquote><div class="author"><div class="avatar">JR</div><div><div class="name">James R.</div><div class="role">Agent &middot; 8 months with Kairos</div></div></div></div>
+      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"No cold calling was the big thing for me. Every person I talk to actually wants life insurance."</blockquote><div class="author"><div class="avatar">MT</div><div><div class="name">Maria T.</div><div class="role">Agent &middot; 1 year with Kairos</div></div></div></div>
+      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"I'm a mom of two. Working remotely on my own schedule and still out-earning my old corporate job is unreal."</blockquote><div class="author"><div class="avatar">SL</div><div><div class="name">Sarah L.</div><div class="role">Agent &middot; 14 months with Kairos</div></div></div></div>
+      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Zero insurance experience. My mentor walked me through everything. Had my first sale in week one."</blockquote><div class="author"><div class="avatar">DW</div><div><div class="name">David W.</div><div class="role">Agent &middot; 5 months with Kairos</div></div></div></div>
+      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"10 years in insurance and never had a comp plan this good. The lead system is the best I've ever used."</blockquote><div class="author"><div class="avatar">KP</div><div><div class="name">Kevin P.</div><div class="role">Agent &middot; 2 years with Kairos</div></div></div></div>
+      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Went from bartending to life insurance. Tripled my income in 4 months. Best decision I ever made."</blockquote><div class="author"><div class="avatar">AN</div><div><div class="name">Ashley N.</div><div class="role">Agent &middot; 10 months with Kairos</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<div class="urgency-banner">
+  <h2>This Monday's Seats Are Filling Fast</h2>
+  <p>We limit each overview to 50 attendees for personal attention. Once spots are gone, you wait until next week.</p>
+  <button class="cta-btn" onclick="openModal()">Claim Your Spot Before It's Gone</button>
+</div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-tag center">Questions?</div>
+    <h2 class="section-title center">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need an insurance license to attend? <span class="arrow">&#9660;</span></div><div class="faq-a">No! The Business Overview is open to everyone. If you decide to move forward, we'll help you get licensed. Most people are fully licensed in about 3 weeks.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there any cost to attend? <span class="arrow">&#9660;</span></div><div class="faq-a">The Business Overview is completely free. No obligation &mdash; come learn, ask questions, and decide if it's right for you.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much does it cost to get started? <span class="arrow">&#9660;</span></div><div class="faq-a">Kairos charges absolutely nothing to get started. The only costs are state licensing fees ($250&ndash;$500 depending on your state). You should also set aside $1,000&ndash;$1,500 for leads and marketing once licensed.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does it take to get licensed? <span class="arrow">&#9660;</span></div><div class="faq-a">About 3 weeks. Pre-licensing course, state exam, and carrier appointments. We walk you through every step.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this really 100% remote? <span class="arrow">&#9660;</span></div><div class="faq-a">Yes. Agents in all 50 states work from home &mdash; and many work remotely from around the world. All trainings, meetings, and mentorship happen virtually.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if I have zero sales experience? <span class="arrow">&#9660;</span></div><div class="faq-a">Many top agents came in with no sales background. Our mentorship program takes you from zero to producing agent fast.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long is the Business Overview? <span class="arrow">&#9660;</span></div><div class="faq-a">About 45&ndash;60 minutes, followed by live Q&A.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What kind of income can I expect? <span class="arrow">&#9660;</span></div><div class="faq-a">Part-time agents often earn $3K&ndash;$5K/month. Full-time agents regularly exceed $10K+/month within their first year.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Your Future Won't Wait.</h2>
+  <p>Register now for this Monday's free Business Overview and see why hundreds of agents are choosing Kairos Financial.</p>
+  <button class="cta-btn" onclick="openModal()">Register for Free &mdash; Limited Spots</button>
+  <p class="spots-note">Only a few spots left. Don't miss out.</p>
+</section>
+
+<footer><p>&copy; 2026 Kairos Financial. All rights reserved. Results vary. Not a guarantee of income.</p></footer>
+
+<!-- FLOATING BAR -->
+<div class="floating-bar" id="floatingBar">
+  <span class="timer-mini" id="miniTimer">00d 00h 00m 00s</span>
+  <button class="cta-btn" onclick="openModal()">Register Now &mdash; Few Spots Left</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h2>Reserve Your Seat</h2>
+    <p>Lock in your spot for this Monday's Business Overview at 8 PM EST.</p>
+    <a class="cta-btn" href="https://calendly.com/YOUR-LINK-HERE" target="_blank" rel="noopener">Book Your Spot Now</a>
+    <p class="fine">Free &middot; No obligation &middot; Limited to 50 spots</p>
+  </div>
+</div>
+
+<script>
+  // Countdown
+  function getNextTarget() {
+    const now = new Date();
+    const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const day = et.getDay();
+    let monday = new Date(et);
+    const diff = (day === 0) ? 1 : (day === 1) ? 0 : (8 - day);
+    monday.setDate(et.getDate() + diff);
+    monday.setHours(20, 0, 0, 0);
+    let cutoff = new Date(monday);
+    cutoff.setHours(22, 0, 0, 0);
+    if (day === 1 && et >= cutoff) monday.setDate(monday.getDate() + 7);
+    const sampleET = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const offsetMs = sampleET.getTime() - new Date().getTime();
+    return new Date(monday.getTime() - offsetMs);
+  }
+
+  let target = getNextTarget();
+  function updateCountdown() {
+    const now = new Date();
+    let diff = target - now;
+    if (diff <= 0) { target = getNextTarget(); diff = target - now; }
+    const d = Math.floor(diff/864e5), h = Math.floor(diff%864e5/36e5),
+          m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-days').textContent = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent = pad(m);
+    document.getElementById('cd-secs').textContent = pad(s);
+    document.getElementById('bar-days').textContent = pad(d);
+    document.getElementById('bar-hours').textContent = pad(h);
+    document.getElementById('bar-mins').textContent = pad(m);
+    document.getElementById('bar-secs').textContent = pad(s);
+    document.getElementById('miniTimer').textContent = `${pad(d)}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Floating bar
+  window.addEventListener('scroll', () => {
+    document.getElementById('floatingBar').classList.toggle('visible', window.scrollY > 600);
+  });
+
+  // Modal
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(e) { if (e.target === e.currentTarget) closeModal(); }
+
+  // FAQ
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+    el.nextElementSibling.classList.toggle('open');
+  }
+
+  // Duplicate scroll tracks
+  function dup(id) { const t = document.getElementById(id); if(t) t.innerHTML += t.innerHTML; }
+  dup('crmScrollTrack');
+
+  // Duplicate carrier track for infinite scroll
+  const ct = document.getElementById('carrierTrack');
+  if (ct) ct.innerHTML += ct.innerHTML;
+
+  // Animate CRM numbers
+  setInterval(() => {
+    const l = 42 + Math.floor(Math.random()*15);
+    const r = 10000 + Math.floor(Math.random()*8000);
+    const f = '$' + r.toLocaleString();
+    document.getElementById('crm-leads').textContent = l;
+    document.getElementById('crm-revenue').textContent = f;
+  }, 4000);
+</script>
+</body>
+</html>
