@@ -484,12 +484,35 @@
     .comp-cell.highlight-col:last-child { border-radius: 0; }
     .comp-row:last-child .comp-cell.highlight-col { border-radius: 0 0 16px 16px; }
 
-    /* ── CRM SECTION ── */
-    .crm-section { padding: 100px 1.5rem; background: var(--white); }
-    .crm-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;
+    /* ── TOOLS SECTION (CRM + AI side by side) ── */
+    .tools-section { padding: 100px 1.5rem; background: var(--white); }
+    .tools-inner { max-width: 1200px; margin: 0 auto; }
+    .tools-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      margin-top: 3rem;
     }
+    .tool-card {
+      background: var(--off-white); border: 1px solid var(--gray-200);
+      border-radius: 20px; padding: 2rem; overflow: hidden;
+    }
+    .tool-card-label {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--blue); font-weight: 700; margin-bottom: .5rem;
+    }
+    .tool-card h3 {
+      font-size: 1.2rem; font-weight: 900; margin-bottom: .5rem;
+    }
+    .tool-card p {
+      font-size: .88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem;
+    }
+    .tool-card .check-list { margin-bottom: 1.5rem; }
+    .tool-card .check-list li { font-size: .85rem; }
+    .tool-graphic {
+      border-radius: 16px; overflow: hidden;
+    }
+
+    /* ── CRM GRAPHIC (reused) ── */
+    .crm-section { padding: 0; background: transparent; }
     .crm-devices {
       position: relative;
       background: #0f0f1a;
@@ -586,15 +609,13 @@
       font-size: .65rem; font-weight: 800; color: var(--blue-vibrant);
       margin-left: .5rem; min-width: 44px; text-align: right;
     }
-    .crm-text .section-tag { margin-bottom: .4rem; }
-    .crm-text .section-title { margin-bottom: .8rem; font-size: clamp(1.5rem,3.5vw,2.2rem); }
-    .crm-text p { color: var(--text-secondary); font-size: .98rem; line-height: 1.7; margin-bottom: 1.4rem; }
+    .crm-devices { animation: none; } /* disable float in card context */
 
-    /* ── AI SALES TRAINING BOT ── */
+    /* ── AI PROSPECT BOT ── */
     .ai-bot-graphic { display: flex; align-items: center; justify-content: center; }
     .ai-bot-container {
       position: relative;
-      width: 100%; max-width: 480px;
+      width: 100%;
       background: #0f0f1a;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,.08);
@@ -659,8 +680,8 @@
       font-size: .5rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
       margin-bottom: .25rem;
     }
-    .ai-bubble-left .ai-bubble-label { color: var(--blue-vibrant); }
-    .ai-bubble-right .ai-bubble-label { color: var(--purple); }
+    .ai-bubble-left .ai-bubble-label { color: var(--purple); }
+    .ai-bubble-right .ai-bubble-label { color: var(--blue-vibrant); }
     .ai-bubble-text {
       font-size: .72rem; color: rgba(255,255,255,.7); line-height: 1.5; font-style: italic;
     }
@@ -839,7 +860,7 @@
       .split { grid-template-columns: 1fr; gap: 2rem; }
       .split.reverse { direction: ltr; }
       .split-image img { height: 240px; }
-      .crm-inner { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr; }
       .crm-pipeline { grid-template-columns: repeat(3, 1fr); gap: .3rem; }
       .comp-header, .comp-row { grid-template-columns: 1.2fr 1fr 1fr 1fr; }
       .comp-cell { padding: .7rem .5rem; font-size: .78rem; }
@@ -1073,135 +1094,125 @@
   </div>
 </section>
 
-<!-- CRM SECTION -->
-<section class="crm-section" style="background:var(--off-white);">
-  <div class="crm-inner">
-    <div class="crm-text">
-      <div class="section-tag">Built-In Technology</div>
-      <h2 class="section-title">Our In-House CRM Does the Heavy Lifting</h2>
-      <p>Forget juggling spreadsheets and third-party apps. Track leads, manage follow-ups, and close deals all from one place &mdash; desktop or mobile.</p>
-      <ul class="check-list">
-        <li>Lead management &amp; automated follow-ups</li>
-        <li>Pipeline tracking with real-time analytics</li>
-        <li>Works on desktop and mobile &mdash; sell from anywhere</li>
-        <li>Built by agents, for agents &mdash; no bloated software</li>
-      </ul>
-      <button class="cta-btn" onclick="openModal()">See It In Action &mdash; Register Free</button>
-    </div>
-    <div class="crm-devices">
-      <!-- Header -->
-      <div class="crm-ui-header">
-        <div class="crm-ui-title">Kairos CRM</div>
-        <div class="crm-ui-badge">Live</div>
-      </div>
-      <!-- Stats -->
-      <div class="crm-ui-stats">
-        <div class="crm-stat-card"><div class="crm-stat-label">Active Leads</div><div class="crm-stat-value" id="crm-leads">47</div></div>
-        <div class="crm-stat-card"><div class="crm-stat-label">This Month</div><div class="crm-stat-value blue-text" id="crm-revenue">$12,840</div></div>
-        <div class="crm-stat-card"><div class="crm-stat-label">Close Rate</div><div class="crm-stat-value">34%</div></div>
-      </div>
-      <!-- Pipeline cards -->
-      <div class="crm-pipeline">
-        <div class="pipeline-col">
-          <div class="pipeline-header new-bg">New <span class="pipeline-count">8</span></div>
-          <div class="pipeline-cards" id="pipelineNew">
-            <div class="pipeline-card"><div class="pc-name">Sarah M.</div><div class="pc-product">Term Life</div><div class="pc-amount">$4,200</div></div>
-            <div class="pipeline-card"><div class="pc-name">Lisa P.</div><div class="pc-product">IUL</div><div class="pc-amount">$3,500</div></div>
-            <div class="pipeline-card"><div class="pc-name">Tyler N.</div><div class="pc-product">Term Life</div><div class="pc-amount">$3,200</div></div>
-          </div>
-        </div>
-        <div class="pipeline-col">
-          <div class="pipeline-header warm-bg">Contacted <span class="pipeline-count">12</span></div>
-          <div class="pipeline-cards" id="pipelineContacted">
-            <div class="pipeline-card"><div class="pc-name">James D.</div><div class="pc-product">Whole Life</div><div class="pc-amount">$2,800</div></div>
-            <div class="pipeline-card"><div class="pc-name">Angela W.</div><div class="pc-product">Whole Life</div><div class="pc-amount">$1,900</div></div>
-            <div class="pipeline-card"><div class="pc-name">Kevin C.</div><div class="pc-product">Term Life</div><div class="pc-amount">$2,100</div></div>
-          </div>
-        </div>
-        <div class="pipeline-col">
-          <div class="pipeline-header hot-bg">Closing <span class="pipeline-count">5</span></div>
-          <div class="pipeline-cards" id="pipelineClosing">
-            <div class="pipeline-card"><div class="pc-name">Robert G.</div><div class="pc-product">Term Life</div><div class="pc-amount">$5,100</div></div>
-            <div class="pipeline-card"><div class="pc-name">Maria R.</div><div class="pc-product">IUL</div><div class="pc-amount">$6,400</div></div>
-          </div>
-        </div>
-      </div>
-      <!-- Scrolling activity feed -->
-      <div class="crm-activity">
-        <div class="crm-activity-label">Recent Activity</div>
-        <div class="crm-scroll-container">
-          <div class="crm-scroll-track" id="crmScrollTrack">
-            <div class="crm-row"><div class="crm-row-avatar">SM</div><div class="crm-row-name">Sarah Mitchell</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$4,200</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">JD</div><div class="crm-row-name">James Donovan</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$2,800</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">LP</div><div class="crm-row-name">Lisa Park</div><div class="crm-row-status new">New</div><div class="crm-row-amount">$3,500</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">RG</div><div class="crm-row-name">Robert Garcia</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$5,100</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">AW</div><div class="crm-row-name">Angela Wright</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$1,900</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">TN</div><div class="crm-row-name">Tyler Nguyen</div><div class="crm-row-status new">New</div><div class="crm-row-amount">$3,200</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">MR</div><div class="crm-row-name">Maria Rodriguez</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$6,400</div></div>
-            <div class="crm-row"><div class="crm-row-avatar">KC</div><div class="crm-row-name">Kevin Chen</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$2,100</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AI SALES TRAINING BOT -->
-<section style="background:var(--off-white);">
-  <div class="section-inner">
-    <div class="split">
-      <div class="split-text">
-        <div class="section-tag">AI-Powered Training</div>
-        <h2 class="section-title">Your Personal AI Sales Coach</h2>
-        <p>Every Kairos agent gets free access to our AI Sales Training Bot &mdash; a virtual coach that helps you master objection handling, product knowledge, and closing techniques 24/7.</p>
+<!-- TOOLS: CRM + AI PROSPECT -->
+<section class="tools-section" style="background:var(--off-white);">
+  <div class="tools-inner">
+    <div class="section-tag center">Built-In Technology</div>
+    <h2 class="section-title center">Tools That Give You an Unfair Advantage</h2>
+    <p class="section-sub center">Every Kairos agent gets access to our in-house CRM and AI practice prospect &mdash; free, from day one.</p>
+    <div class="tools-grid">
+      <!-- CRM Card -->
+      <div class="tool-card">
+        <div class="tool-card-label">Lead Management</div>
+        <h3>In-House CRM</h3>
+        <p>Track leads, manage follow-ups, and close deals all from one place &mdash; desktop or mobile.</p>
         <ul class="check-list">
-          <li>Practice real sales scenarios with instant AI feedback</li>
-          <li>Master objection handling before you ever get on a call</li>
-          <li>Get product knowledge answers in seconds, not hours</li>
-          <li>Train anytime &mdash; nights, weekends, at your own pace</li>
-          <li>100% free for all Kairos agents</li>
+          <li>Lead management &amp; automated follow-ups</li>
+          <li>Pipeline tracking with real-time analytics</li>
+          <li>Works on desktop and mobile</li>
+          <li>Built by agents, for agents</li>
         </ul>
-        <button class="cta-btn" onclick="openModal()">Get Access &mdash; Register Free</button>
-      </div>
-      <div class="ai-bot-graphic">
-        <div class="ai-bot-container">
-          <!-- Neural network background -->
-          <div class="ai-neural-bg">
-            <div class="ai-node" style="top:12%;left:18%"></div>
-            <div class="ai-node" style="top:28%;left:72%"></div>
-            <div class="ai-node" style="top:55%;left:25%"></div>
-            <div class="ai-node" style="top:70%;left:68%"></div>
-            <div class="ai-node" style="top:40%;left:50%"></div>
-            <div class="ai-node" style="top:85%;left:40%"></div>
-          </div>
-          <!-- Central brain icon -->
-          <div class="ai-brain-ring">
-            <div class="ai-brain-icon">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
-                <path d="M32 8c-6 0-11 3-14 8-4 2-7 7-7 12 0 5 2 9 6 12 0 6 4 11 9 13 2 1 4 2 6 2s4-1 6-2c5-2 9-7 9-13 4-3 6-7 6-12 0-5-3-10-7-12C43 11 38 8 32 8z" stroke="url(#brain-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M32 8v48M18 16c4 6 10 10 14 10s10-4 14-10M11 28h42M18 48c4-6 10-10 14-10s10 4 14 10" stroke="url(#brain-grad)" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-                <defs><linearGradient id="brain-grad" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#2997ff"/><stop offset="1" stop-color="#6e5ce6"/></linearGradient></defs>
-              </svg>
+        <div class="tool-graphic">
+          <div class="crm-devices">
+            <div class="crm-ui-header">
+              <div class="crm-ui-title">Kairos CRM</div>
+              <div class="crm-ui-badge">Live</div>
+            </div>
+            <div class="crm-ui-stats">
+              <div class="crm-stat-card"><div class="crm-stat-label">Active Leads</div><div class="crm-stat-value" id="crm-leads">47</div></div>
+              <div class="crm-stat-card"><div class="crm-stat-label">This Month</div><div class="crm-stat-value blue-text" id="crm-revenue">$12,840</div></div>
+              <div class="crm-stat-card"><div class="crm-stat-label">Close Rate</div><div class="crm-stat-value">34%</div></div>
+            </div>
+            <div class="crm-pipeline">
+              <div class="pipeline-col">
+                <div class="pipeline-header new-bg">New <span class="pipeline-count">8</span></div>
+                <div class="pipeline-cards" id="pipelineNew">
+                  <div class="pipeline-card"><div class="pc-name">Sarah M.</div><div class="pc-product">Term Life</div><div class="pc-amount">$4,200</div></div>
+                  <div class="pipeline-card"><div class="pc-name">Lisa P.</div><div class="pc-product">IUL</div><div class="pc-amount">$3,500</div></div>
+                </div>
+              </div>
+              <div class="pipeline-col">
+                <div class="pipeline-header warm-bg">Contacted <span class="pipeline-count">12</span></div>
+                <div class="pipeline-cards" id="pipelineContacted">
+                  <div class="pipeline-card"><div class="pc-name">James D.</div><div class="pc-product">Whole Life</div><div class="pc-amount">$2,800</div></div>
+                  <div class="pipeline-card"><div class="pc-name">Angela W.</div><div class="pc-product">Whole Life</div><div class="pc-amount">$1,900</div></div>
+                </div>
+              </div>
+              <div class="pipeline-col">
+                <div class="pipeline-header hot-bg">Closing <span class="pipeline-count">5</span></div>
+                <div class="pipeline-cards" id="pipelineClosing">
+                  <div class="pipeline-card"><div class="pc-name">Robert G.</div><div class="pc-product">Term Life</div><div class="pc-amount">$5,100</div></div>
+                  <div class="pipeline-card"><div class="pc-name">Maria R.</div><div class="pc-product">IUL</div><div class="pc-amount">$6,400</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="crm-activity">
+              <div class="crm-activity-label">Recent Activity</div>
+              <div class="crm-scroll-container">
+                <div class="crm-scroll-track" id="crmScrollTrack">
+                  <div class="crm-row"><div class="crm-row-avatar">SM</div><div class="crm-row-name">Sarah Mitchell</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$4,200</div></div>
+                  <div class="crm-row"><div class="crm-row-avatar">JD</div><div class="crm-row-name">James Donovan</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$2,800</div></div>
+                  <div class="crm-row"><div class="crm-row-avatar">LP</div><div class="crm-row-name">Lisa Park</div><div class="crm-row-status new">New</div><div class="crm-row-amount">$3,500</div></div>
+                  <div class="crm-row"><div class="crm-row-avatar">RG</div><div class="crm-row-name">Robert Garcia</div><div class="crm-row-status hot">Hot</div><div class="crm-row-amount">$5,100</div></div>
+                  <div class="crm-row"><div class="crm-row-avatar">AW</div><div class="crm-row-name">Angela Wright</div><div class="crm-row-status warm">Warm</div><div class="crm-row-amount">$1,900</div></div>
+                  <div class="crm-row"><div class="crm-row-avatar">TN</div><div class="crm-row-name">Tyler Nguyen</div><div class="crm-row-status new">New</div><div class="crm-row-amount">$3,200</div></div>
+                </div>
+              </div>
             </div>
           </div>
-          <!-- Chat bubbles -->
-          <div class="ai-chat-bubble ai-bubble-left">
-            <div class="ai-bubble-label">You</div>
-            <div class="ai-bubble-text">"How do I handle the 'I need to think about it' objection?"</div>
-          </div>
-          <div class="ai-chat-bubble ai-bubble-right">
-            <div class="ai-bubble-label">AI Coach</div>
-            <div class="ai-bubble-text">"Great question — try the feel-felt-found method: 'I understand how you feel...'"</div>
-          </div>
-          <!-- Floating skill tags -->
-          <div class="ai-skill-tags">
-            <span class="ai-tag">Objection Handling</span>
-            <span class="ai-tag">Product Knowledge</span>
-            <span class="ai-tag">Closing Scripts</span>
-            <span class="ai-tag">IUL Explained</span>
+        </div>
+      </div>
+
+      <!-- AI Prospect Card -->
+      <div class="tool-card">
+        <div class="tool-card-label">Sales Practice</div>
+        <h3>AI Practice Prospect</h3>
+        <p>Pitch, handle objections, and practice closing &mdash; against a realistic AI prospect that pushes back like a real client.</p>
+        <ul class="check-list">
+          <li>Realistic prospect that raises real objections</li>
+          <li>Practice your pitch and closing before live calls</li>
+          <li>Get instant feedback on what you said right and wrong</li>
+          <li>Available 24/7 &mdash; practice anytime, unlimited reps</li>
+        </ul>
+        <div class="tool-graphic">
+          <div class="ai-bot-container">
+            <div class="ai-neural-bg">
+              <div class="ai-node" style="top:12%;left:18%"></div>
+              <div class="ai-node" style="top:28%;left:72%"></div>
+              <div class="ai-node" style="top:55%;left:25%"></div>
+              <div class="ai-node" style="top:70%;left:68%"></div>
+              <div class="ai-node" style="top:40%;left:50%"></div>
+              <div class="ai-node" style="top:85%;left:40%"></div>
+            </div>
+            <div class="ai-brain-ring">
+              <div class="ai-brain-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+                  <circle cx="32" cy="20" r="10" stroke="url(#prospect-grad)" stroke-width="2.5" fill="none"/>
+                  <path d="M12 52c0-11 9-20 20-20s20 9 20 20" stroke="url(#prospect-grad)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  <defs><linearGradient id="prospect-grad" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#2997ff"/><stop offset="1" stop-color="#6e5ce6"/></linearGradient></defs>
+                </svg>
+              </div>
+            </div>
+            <div class="ai-chat-bubble ai-bubble-right">
+              <div class="ai-bubble-label">AI Prospect</div>
+              <div class="ai-bubble-text">"I'm not sure I need life insurance right now &mdash; I'm only 28 and healthy."</div>
+            </div>
+            <div class="ai-chat-bubble ai-bubble-left">
+              <div class="ai-bubble-label">You</div>
+              <div class="ai-bubble-text">"That's actually the best time to lock in a rate &mdash; let me show you what $30/mo looks like now vs. waiting..."</div>
+            </div>
+            <div class="ai-skill-tags">
+              <span class="ai-tag">Objection Handling</span>
+              <span class="ai-tag">Closing Practice</span>
+              <span class="ai-tag">Product Pitch</span>
+              <span class="ai-tag">Needs Analysis</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <button class="cta-btn" onclick="openModal()">See Our Tools &mdash; Register Free</button>
     </div>
   </div>
 </section>
@@ -1225,7 +1236,7 @@
   <div class="section-inner">
     <div class="split reverse">
       <div class="split-image">
-        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Mentorship and coaching">
+        <img src="Work side by side.jpg" alt="Mentorship and coaching">
       </div>
       <div class="split-text">
         <div class="section-tag">Learn From the Best</div>
