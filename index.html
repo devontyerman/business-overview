@@ -185,7 +185,7 @@
       position: relative; width: 280px; height: 500px;
       border-radius: 20px; overflow: hidden;
       background: #000;
-      border: 1px solid var(--gray-200);
+      border: 2px solid var(--gray-900);
       box-shadow: 0 12px 40px rgba(0,0,0,.15), 0 4px 12px rgba(0,0,0,.08);
       flex-shrink: 0;
     }
@@ -206,9 +206,11 @@
       cursor: pointer;
     }
     .proof-screenshot.expanded {
-      transform: scale(2) rotate(0deg) translateY(0) !important;
+      transform: scale(2) rotate(0deg) translateX(0) translateY(0) !important;
       box-shadow: 0 30px 80px rgba(0,0,0,.25);
-      z-index: 100;
+      z-index: 200 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
     .proof-screenshot:hover:not(.expanded) {
       box-shadow: 0 16px 50px rgba(0,0,0,.18);
@@ -1069,7 +1071,7 @@
       </div>
       <div class="comp-row">
         <div class="comp-cell">Compensation</div>
-        <div class="comp-cell highlight-col">Up to 145% commission + 3 bonuses (monthly, quarterly, yearly)</div>
+        <div class="comp-cell highlight-col">Up to 145% commission</div>
         <div class="comp-cell">Low, capped rates</div>
         <div class="comp-cell">Varies widely</div>
       </div>
@@ -1118,7 +1120,7 @@
   <div class="section-inner">
     <div class="split">
       <div class="split-image">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Team collaboration">
+        <img src="remote work.jpg" alt="Working remotely from the beach">
       </div>
       <div class="split-text">
         <div class="section-tag">Work From Anywhere</div>
