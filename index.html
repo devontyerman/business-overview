@@ -896,20 +896,33 @@
       position: fixed; inset: 0; z-index: 9999;
       background: var(--gray-900);
       display: flex; align-items: center; justify-content: center; flex-direction: column;
-      transition: opacity .6s ease, visibility .6s;
+      transition: opacity .8s ease, visibility .8s;
     }
     .splash.fade-out { opacity: 0; visibility: hidden; }
-    .splash-logo {
-      font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: -.02em;
-      opacity: 0; transform: translateY(12px);
-      animation: splash-up .6s ease .2s forwards;
+    .splash-mark {
+      width: 80px; height: 80px; border-radius: 20px;
+      background: var(--gradient-vibrant);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(.8);
+      animation: splash-mark-in .6s cubic-bezier(.22,1,.36,1) .2s forwards;
     }
-    .splash-logo span { color: var(--blue-vibrant); }
+    .splash-mark span {
+      font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: -.02em;
+    }
     .splash-line {
-      width: 48px; height: 2px; background: var(--blue-vibrant);
-      margin-top: 1rem; border-radius: 2px;
+      width: 48px; height: 2px; background: rgba(255,255,255,.25);
+      margin-top: 1.2rem; border-radius: 2px;
       opacity: 0; transform: scaleX(0);
-      animation: splash-line .5s ease .5s forwards;
+      animation: splash-line .5s ease .7s forwards;
+    }
+    .splash-text {
+      margin-top: .8rem; font-size: .85rem; font-weight: 600;
+      color: rgba(255,255,255,.5); letter-spacing: 3px; text-transform: uppercase;
+      opacity: 0; transform: translateY(6px);
+      animation: splash-up .5s ease .9s forwards;
+    }
+    @keyframes splash-mark-in {
+      to { opacity: 1; transform: scale(1); }
     }
     @keyframes splash-up {
       to { opacity: 1; transform: translateY(0); }
@@ -949,8 +962,9 @@
 
 <!-- SPLASH INTRO -->
 <div class="splash" id="splash">
-  <div class="splash-logo">Kairos <span>Financial</span></div>
+  <div class="splash-mark"><span>KF</span></div>
   <div class="splash-line"></div>
+  <div class="splash-text">Kairos Financial</div>
 </div>
 
 <!-- ANNOUNCEMENT BAR -->
@@ -1408,12 +1422,12 @@
 </div>
 
 <script>
-  // Splash intro - fade out after 1.4s
+  // Splash intro - fade out after 2.2s
   setTimeout(() => {
     const splash = document.getElementById('splash');
     splash.classList.add('fade-out');
-    setTimeout(() => splash.remove(), 600);
-  }, 1400);
+    setTimeout(() => splash.remove(), 800);
+  }, 2200);
 
   // Countdown
   function getNextTarget() {
