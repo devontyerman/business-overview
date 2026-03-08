@@ -112,7 +112,7 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh; display: flex; align-items: center;
+      display: flex; align-items: center;
       padding: 120px 1.5rem 40px;
       background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
       position: relative;
@@ -137,6 +137,7 @@
       margin-bottom: 1.4rem; letter-spacing: -.03em;
       background: linear-gradient(135deg, var(--text) 0%, var(--gray-600) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.12));
     }
     .hero h1 .blue {
       background: var(--gradient-vibrant);
@@ -169,7 +170,7 @@
     }
 
     /* ── AGENT PROOF SECTION ── */
-    .agent-proof { padding: 40px 1.5rem 100px; background: var(--off-white); }
+    .agent-proof { padding: 20px 1.5rem 80px; background: var(--off-white); }
     .agent-proof-inner { max-width: 1200px; margin: 0 auto; }
     .agent-proof .section-tag.center,
     .agent-proof .section-title.center { text-align: center; }
@@ -184,7 +185,8 @@
       position: relative; width: 280px; height: 500px;
       border-radius: 20px; overflow: hidden;
       background: #000;
-      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 12px 40px rgba(0,0,0,.15), 0 4px 12px rgba(0,0,0,.08);
       flex-shrink: 0;
     }
 
@@ -196,13 +198,19 @@
     }
     .proof-screenshot {
       width: 280px; border-radius: 16px; overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06);
-      transition: transform .3s, box-shadow .3s;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.08);
+      transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, z-index 0s;
       position: relative;
       background: #fff;
+      cursor: pointer;
     }
-    .proof-screenshot:hover {
-      transform: scale(1.04) !important;
+    .proof-screenshot.expanded {
+      transform: scale(2) rotate(0deg) translateY(0) !important;
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+      z-index: 100;
+    }
+    .proof-screenshot:hover:not(.expanded) {
       box-shadow: 0 16px 50px rgba(0,0,0,.18);
       z-index: 10;
     }
@@ -266,7 +274,8 @@
     }
     .cta-btn:hover { background: #005bb5; transform: scale(1.02); box-shadow: 0 6px 24px rgba(0,113,227,.25); }
     .cta-btn.large {
-      font-size: 1.15rem; padding: 1.15rem 3rem;
+      font-size: 1.25rem; padding: 1.3rem 3.5rem;
+      box-shadow: 0 8px 30px rgba(0,113,227,.3);
     }
     .cta-btn.outline {
       background: transparent; border: 1.5px solid var(--blue); color: var(--blue);
@@ -473,11 +482,12 @@
     .comp-row:hover .comp-cell { background: var(--gray-50); }
     .comp-row:hover .comp-cell.highlight-col { background: rgba(0,113,227,.06); }
     .comp-cell {
-      padding: 1.15rem 1.2rem; font-size: .84rem; display: flex;
+      padding: 1rem 1.2rem; font-size: .84rem; display: flex;
       align-items: center; justify-content: center; text-align: center;
       color: var(--text-secondary); line-height: 1.5;
       border-bottom: 1px solid var(--gray-100);
       transition: background .15s;
+      min-height: 56px;
     }
     .comp-cell:first-child { justify-content: flex-start; font-weight: 600; color: var(--text); text-align: left; }
     .comp-cell.highlight-col { background: rgba(0,113,227,.03); color: var(--blue); font-weight: 700; }
@@ -509,7 +519,9 @@
     .tool-card .check-list li { font-size: .85rem; }
     .tool-graphic {
       border-radius: 16px; overflow: hidden;
+      min-height: 420px; display: flex; flex-direction: column;
     }
+    .tool-graphic > * { flex: 1; }
 
     /* ── CRM GRAPHIC (reused) ── */
     .crm-section { padding: 0; background: transparent; }
@@ -849,6 +861,37 @@
     .floating-bar.visible { transform: translateY(0); }
     .floating-bar .timer-mini { font-size: .82rem; font-weight: 700; color: var(--text); }
     .floating-bar .cta-btn { padding: .5rem 1.4rem; font-size: .8rem; }
+
+    /* ── TIMED POPUP ── */
+    .timed-popup-overlay {
+      display: none; position: fixed; inset: 0; z-index: 250;
+      background: rgba(0,0,0,.4); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .timed-popup-overlay.active { display: flex; }
+    .timed-popup {
+      background: var(--white); border-radius: 24px; padding: 2.5rem 2rem;
+      max-width: 440px; width: 92%; text-align: center; position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,.2);
+      animation: popup-in .4s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes popup-in {
+      from { opacity: 0; transform: scale(.9) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .timed-popup-close {
+      position: absolute; top: .8rem; right: 1rem; background: none;
+      border: none; color: var(--text-tertiary); font-size: 1.4rem; cursor: pointer;
+    }
+    .timed-popup-icon {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1.2rem;
+      background: var(--gradient-blue);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .timed-popup h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: .5rem; }
+    .timed-popup p { color: var(--text-secondary); font-size: .95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .timed-popup .cta-btn { width: 100%; text-align: center; display: block; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -1310,6 +1353,19 @@
   </div>
 </div>
 
+<!-- TIMED POPUP -->
+<div class="timed-popup-overlay" id="timedPopup" onclick="if(event.target===this)closeTimedPopup()">
+  <div class="timed-popup">
+    <button class="timed-popup-close" onclick="closeTimedPopup()">&times;</button>
+    <div class="timed-popup-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    <h2>Book Your Business Overview Call Now</h2>
+    <p>Spots fill up fast every Monday. Grab your seat for this week's free overview at 8 PM EST.</p>
+    <a class="cta-btn" href="https://api.leadconnectorhq.com/widget/booking/BicWKsUongOgedn4wt2c" onclick="event.preventDefault();closeTimedPopup();openModal();">Book My Spot Now</a>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">&times;</button>
@@ -1422,6 +1478,32 @@
       'Register for this Monday\u2019s overview'
     ), 60000);
   })();
+
+  // Screenshot expand on click
+  document.querySelectorAll('.proof-screenshot').forEach(el => {
+    el.addEventListener('click', () => {
+      const wasExpanded = el.classList.contains('expanded');
+      document.querySelectorAll('.proof-screenshot.expanded').forEach(s => s.classList.remove('expanded'));
+      if (!wasExpanded) el.classList.add('expanded');
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.proof-screenshot')) {
+      document.querySelectorAll('.proof-screenshot.expanded').forEach(s => s.classList.remove('expanded'));
+    }
+  });
+
+  // Timed popup after 60 seconds
+  let timedPopupShown = false;
+  function closeTimedPopup() {
+    document.getElementById('timedPopup').classList.remove('active');
+  }
+  setTimeout(() => {
+    if (!timedPopupShown) {
+      timedPopupShown = true;
+      document.getElementById('timedPopup').classList.add('active');
+    }
+  }, 60000);
 </script>
 </body>
 </html>
