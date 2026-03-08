@@ -1551,7 +1551,8 @@
     document.getElementById('timedPopup').classList.remove('active');
   }
   setTimeout(() => {
-    if (!timedPopupShown) {
+    const modalOpen = document.getElementById('modalOverlay').classList.contains('active');
+    if (!timedPopupShown && !modalOpen) {
       timedPopupShown = true;
       document.getElementById('timedPopup').classList.add('active');
     }
