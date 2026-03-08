@@ -774,16 +774,13 @@
     .faq-list { max-width: 680px; margin: 0 auto; }
     .faq-item { border-bottom: 1px solid var(--gray-200); padding: 1.1rem 0; }
     .faq-q {
-      font-weight: 700; cursor: pointer; display: flex; justify-content: space-between;
-      align-items: center; font-size: .95rem; user-select: none;
+      font-weight: 700; font-size: .95rem;
     }
-    .faq-q .arrow { transition: transform .3s; font-size: .7rem; color: var(--blue); flex-shrink: 0; margin-left: 1rem; }
-    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-q .arrow { display: none; }
     .faq-a {
-      max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
       color: var(--text-secondary); font-size: .9rem; line-height: 1.7;
+      padding-top: .7rem;
     }
-    .faq-a.open { max-height: 300px; padding-top: .7rem; }
 
     /* ── FINAL CTA ── */
     .final-cta {
@@ -1320,7 +1317,7 @@
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this really 100% remote? <span class="arrow">&#9660;</span></div><div class="faq-a">Yes. Agents in all 50 states work from home &mdash; and many work remotely from around the world. All trainings, meetings, and mentorship happen virtually.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What if I have zero sales experience? <span class="arrow">&#9660;</span></div><div class="faq-a">Many top agents came in with no sales background. Our mentorship program takes you from zero to producing agent fast.</div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long is the Business Overview? <span class="arrow">&#9660;</span></div><div class="faq-a">About 45&ndash;60 minutes, followed by live Q&A.</div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What kind of income can I expect? <span class="arrow">&#9660;</span></div><div class="faq-a">Part-time agents often earn $3K&ndash;$5K/month. Full-time agents regularly exceed $10K+/month within their first year.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What kind of income can I expect? <span class="arrow">&#9660;</span></div><div class="faq-a">Average agents earn $7K&ndash;$10K/month. Top agents earn $10K&ndash;$20K/month. Managers and leaders earn over $250K/year.</div></div>
     </div>
   </div>
 </section>
