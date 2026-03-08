@@ -113,13 +113,13 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
-      padding: 80px 1.5rem 80px;
+      padding: 120px 1.5rem 80px;
       background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
       position: relative;
     }
     .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      max-width: 900px; margin: 0 auto; width: 100%;
+      text-align: center;
     }
     .hero-text { }
     .live-badge {
@@ -133,8 +133,8 @@
       animation: pulse-dot 1.5s infinite;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.08;
-      margin-bottom: 1.2rem; letter-spacing: -.02em;
+      font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05;
+      margin-bottom: 1.4rem; letter-spacing: -.03em;
       background: linear-gradient(135deg, var(--text) 0%, var(--gray-600) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
@@ -143,28 +143,9 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero .subhead {
-      font-size: 1.12rem; color: var(--text-secondary); max-width: 500px;
-      margin-bottom: 2rem; line-height: 1.65;
+      font-size: 1.2rem; color: var(--text-secondary); max-width: 600px;
+      margin: 0 auto 2rem; line-height: 1.65;
     }
-    .hero-image { position: relative; }
-    .hero-image img {
-      width: 100%; height: 420px; object-fit: cover; display: block;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.08);
-    }
-    .hero-image-overlay {
-      position: absolute; bottom: -16px; left: 24px;
-      background: var(--white); border-radius: 14px;
-      padding: 1rem 1.4rem; box-shadow: 0 8px 30px rgba(0,0,0,.08);
-      display: flex; align-items: center; gap: .8rem;
-    }
-    .hero-image-overlay .stat-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: rgba(0,113,227,.1); display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
-    .hero-image-overlay .stat-num { font-size: 1.3rem; font-weight: 900; color: var(--blue); }
-    .hero-image-overlay .stat-label { font-size: .68rem; color: var(--text-tertiary); }
 
     /* ── COUNTDOWN ── */
     .countdown-wrap { margin-bottom: 2rem; }
@@ -172,7 +153,7 @@
       font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px;
       color: var(--text-tertiary); margin-bottom: .6rem; font-weight: 600;
     }
-    .countdown { display: flex; gap: .5rem; }
+    .countdown { display: flex; gap: .5rem; justify-content: center; }
     .countdown .unit {
       background: var(--white); border: 1px solid var(--gray-200);
       border-radius: 12px; padding: .6rem .9rem; min-width: 64px; text-align: center;
@@ -185,6 +166,107 @@
     .countdown .lbl {
       font-size: .55rem; text-transform: uppercase; letter-spacing: 1.5px;
       color: var(--text-tertiary); margin-top: .2rem;
+    }
+
+    /* ── AGENT PROOF SECTION ── */
+    .agent-proof { padding: 80px 1.5rem 100px; background: var(--off-white); }
+    .agent-proof-inner { max-width: 1200px; margin: 0 auto; }
+    .agent-proof .section-tag.center,
+    .agent-proof .section-title.center { text-align: center; }
+    .agent-proof .section-sub.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Videos row */
+    .proof-videos {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-bottom: 3.5rem; flex-wrap: wrap;
+    }
+    .proof-video-wrap {
+      position: relative; width: 280px; height: 500px;
+      border-radius: 20px; overflow: hidden;
+      background: #000; cursor: pointer;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+      flex-shrink: 0;
+    }
+    .proof-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .proof-video-play {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,.25); transition: background .2s; z-index: 2;
+    }
+    .proof-video-play.hidden { opacity: 0; pointer-events: none; }
+    .proof-video-play svg {
+      width: 60px; height: 60px; filter: drop-shadow(0 4px 12px rgba(0,0,0,.3));
+    }
+    .proof-video-wrap:hover .proof-video-play { background: rgba(0,0,0,.15); }
+
+    /* Scattered text screenshots */
+    .proof-screenshots {
+      display: flex; justify-content: center; align-items: flex-start;
+      gap: 0; margin-bottom: 3.5rem; position: relative;
+      min-height: 420px; flex-wrap: wrap;
+    }
+    .proof-screenshot {
+      width: 280px; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06);
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+      background: #fff;
+    }
+    .proof-screenshot:hover {
+      transform: scale(1.04) !important;
+      box-shadow: 0 16px 50px rgba(0,0,0,.18);
+      z-index: 10;
+    }
+    .proof-screenshot img { width: 100%; display: block; }
+    .proof-screenshot:nth-child(1) {
+      transform: rotate(-3deg) translateY(20px);
+      z-index: 3;
+    }
+    .proof-screenshot:nth-child(2) {
+      transform: rotate(2deg) translateY(-10px);
+      z-index: 4; margin-left: -30px; margin-right: -30px;
+    }
+    .proof-screenshot:nth-child(3) {
+      transform: rotate(-1.5deg) translateY(30px);
+      z-index: 2;
+    }
+
+    /* Reviews row */
+    .proof-reviews {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    }
+    .proof-review {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 1.8rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .proof-review:hover { box-shadow: 0 8px 30px rgba(0,0,0,.06); transform: translateY(-2px); }
+    .proof-review .stars { color: var(--orange); font-size: .9rem; margin-bottom: .7rem; letter-spacing: 1px; }
+    .proof-review blockquote {
+      font-size: .9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .proof-review .author { display: flex; align-items: center; gap: .7rem; }
+    .proof-review .avatar {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--gradient-blue);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #fff; font-size: .75rem;
+    }
+    .proof-review .name { font-weight: 700; font-size: .85rem; }
+    .proof-review .role { font-size: .72rem; color: var(--text-tertiary); }
+
+    @media (max-width: 900px) {
+      .proof-screenshots { flex-direction: column; align-items: center; min-height: auto; }
+      .proof-screenshot { margin: 0 !important; }
+      .proof-screenshot:nth-child(1) { transform: rotate(-2deg); }
+      .proof-screenshot:nth-child(2) { transform: rotate(1.5deg); margin-top: -20px !important; }
+      .proof-screenshot:nth-child(3) { transform: rotate(-1deg); margin-top: -20px !important; }
+      .proof-reviews { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .proof-video-wrap { width: 220px; height: 390px; }
+      .proof-videos { gap: 1rem; }
     }
 
     /* ── BUTTONS ── */
@@ -699,9 +781,12 @@
     }
     .modal-overlay.active { display: flex; }
     .modal {
-      background: var(--white); border-radius: 20px; padding: 2.5rem;
-      max-width: 440px; width: 90%; position: relative; text-align: center;
-      box-shadow: 0 25px 60px rgba(0,0,0,.15);
+      background: var(--white); border-radius: 20px; padding: 2rem 1.5rem 1.5rem;
+      max-width: 600px; width: 94%; max-height: 90vh; position: relative; text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,.15); overflow: hidden;
+    }
+    .modal iframe {
+      width: 100%; min-height: 600px; border: none; border-radius: 10px;
     }
     .modal-close {
       position: absolute; top: .8rem; right: 1rem; background: none;
@@ -712,6 +797,31 @@
     .modal .cta-btn { width: 100%; text-align: center; }
     .modal .fine { font-size: .7rem; color: var(--text-tertiary); margin-top: .8rem; }
 
+    /* ── SCARCITY TOAST ── */
+    .booking-toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300;
+      background: var(--white);
+      border-radius: 14px;
+      padding: .8rem 1.1rem .8rem .9rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
+      display: flex; align-items: center; gap: .7rem;
+      transform: translateY(20px); opacity: 0;
+      pointer-events: none;
+      transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s ease;
+      max-width: 320px;
+    }
+    .booking-toast.visible {
+      transform: translateY(0); opacity: 1; pointer-events: auto;
+    }
+    .booking-toast-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gradient-blue);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .booking-toast-icon svg { width: 18px; height: 18px; }
+    .booking-toast-text { font-size: .82rem; color: var(--text); font-weight: 600; line-height: 1.35; }
+    .booking-toast-sub { font-size: .68rem; color: var(--text-tertiary); font-weight: 400; margin-top: .1rem; }
     /* ── FLOATING BAR ── */
     .floating-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
@@ -733,10 +843,6 @@
       .announcement-bar .bar-unit { font-size: .8rem; min-width: 28px; }
       nav { top: 46px; }
       .hero { padding-top: 120px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-      .hero-image { display: none; }
-      .countdown { justify-content: center; }
-      .hero .subhead { margin-left: auto; margin-right: auto; }
       .split { grid-template-columns: 1fr; gap: 2rem; }
       .split.reverse { direction: ltr; }
       .split-image img { height: 240px; }
@@ -769,7 +875,7 @@
     <div class="bar-unit" id="bar-mins">00</div><span class="bar-sep">:</span>
     <div class="bar-unit" id="bar-secs">00</div>
   </div>
-  <span class="spots-live">Only 7 spots left!</span>
+  <span class="spots-live">Limited onboarding capacity each week</span>
   <button class="bar-cta" onclick="openModal()">Register Now</button>
 </div>
 
@@ -791,14 +897,52 @@
         </div>
       </div>
       <button class="cta-btn large" onclick="openModal()">Reserve Your Spot Now</button>
-      <p class="spots-note">Limited to 50 spots &mdash; only a few remaining!</p>
+      <p class="spots-note">Limited onboarding capacity each week &mdash; apply early</p>
     </div>
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Remote team working">
-      <div class="hero-image-overlay">
-        <div class="stat-icon">&#127968;</div>
-        <div><div class="stat-num">100%</div><div class="stat-label">Fully Remote</div></div>
+  </div>
+</section>
+
+<!-- WHAT OUR AGENTS ARE SAYING -->
+<section class="agent-proof">
+  <div class="agent-proof-inner">
+    <div class="section-tag center">Real Results</div>
+    <h2 class="section-title center">What Our Agents Are Saying</h2>
+    <p class="section-sub center">Don't take our word for it &mdash; hear directly from agents who made the move.</p>
+
+    <!-- Videos -->
+    <div class="proof-videos">
+      <div class="proof-video-wrap" onclick="toggleProofVideo(this)">
+        <video src="IMG_4353.mov" playsinline preload="metadata"></video>
+        <div class="proof-video-play">
+          <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,.9)"/><polygon points="33,24 33,56 58,40" fill="#1d1d1f"/></svg>
+        </div>
       </div>
+      <div class="proof-video-wrap" onclick="toggleProofVideo(this)">
+        <video src="copy_4797D254-BEBD-4C81-B7F2-274D675DFA52.MOV" playsinline preload="metadata"></video>
+        <div class="proof-video-play">
+          <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,.9)"/><polygon points="33,24 33,56 58,40" fill="#1d1d1f"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scattered text conversation screenshots -->
+    <div class="proof-screenshots">
+      <div class="proof-screenshot">
+        <img src="Screenshot 2026-03-07 at 11.36.01 PM.png" alt="Agent text conversation - $5,000 commission in 3.5 days">
+      </div>
+      <div class="proof-screenshot">
+        <img src="IMG_0769.jpg" alt="Agent text conversation - $9,300 first week">
+      </div>
+      <div class="proof-screenshot">
+        <img src="Screenshot 2026-03-07 at 11.36.14 PM.png" alt="Agent text conversation - $5,100 commission in 1 week">
+      </div>
+    </div>
+
+    <!-- 3 Reviews -->
+    <div class="proof-reviews">
+      <div class="proof-review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"I was stuck at a 9-to-5 making $55K. Within 6 months at Kairos, I passed six figures working from my apartment."</blockquote><div class="author"><div class="avatar">JR</div><div><div class="name">James R.</div><div class="role">Agent &middot; 8 months with Kairos</div></div></div></div>
+      <div class="proof-review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"No cold calling was the big thing for me. Every person I talk to actually wants life insurance."</blockquote><div class="author"><div class="avatar">MT</div><div><div class="name">Maria T.</div><div class="role">Agent &middot; 1 year with Kairos</div></div></div></div>
+      <div class="proof-review"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Zero insurance experience. My mentor walked me through everything. Had my first sale in week one."</blockquote><div class="author"><div class="avatar">DW</div><div><div class="name">David W.</div><div class="role">Agent &middot; 5 months with Kairos</div></div></div></div>
     </div>
   </div>
 </section>
@@ -1112,22 +1256,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-inner">
-    <div class="section-tag center">Real Results</div>
-    <h2 class="section-title center">What Our Agents Are Saying</h2>
-    <p class="section-sub center">Don't take our word for it &mdash; hear from agents who made the move.</p>
-    <div class="testimonials-grid">
-      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"I was stuck at a 9-to-5 making $55K. Within 6 months at Kairos, I passed six figures working from my apartment."</blockquote><div class="author"><div class="avatar">JR</div><div><div class="name">James R.</div><div class="role">Agent &middot; 8 months with Kairos</div></div></div></div>
-      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"No cold calling was the big thing for me. Every person I talk to actually wants life insurance."</blockquote><div class="author"><div class="avatar">MT</div><div><div class="name">Maria T.</div><div class="role">Agent &middot; 1 year with Kairos</div></div></div></div>
-      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"I'm a mom of two. Working remotely on my own schedule and still out-earning my old corporate job is unreal."</blockquote><div class="author"><div class="avatar">SL</div><div><div class="name">Sarah L.</div><div class="role">Agent &middot; 14 months with Kairos</div></div></div></div>
-      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Zero insurance experience. My mentor walked me through everything. Had my first sale in week one."</blockquote><div class="author"><div class="avatar">DW</div><div><div class="name">David W.</div><div class="role">Agent &middot; 5 months with Kairos</div></div></div></div>
-      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"10 years in insurance and never had a comp plan this good. The lead system is the best I've ever used."</blockquote><div class="author"><div class="avatar">KP</div><div><div class="name">Kevin P.</div><div class="role">Agent &middot; 2 years with Kairos</div></div></div></div>
-      <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Went from bartending to life insurance. Tripled my income in 4 months. Best decision I ever made."</blockquote><div class="author"><div class="avatar">AN</div><div><div class="name">Ashley N.</div><div class="role">Agent &middot; 10 months with Kairos</div></div></div></div>
-    </div>
-  </div>
-</section>
 
 <!-- URGENCY -->
 <div class="urgency-banner">
@@ -1171,13 +1299,26 @@
 </div>
 
 <!-- MODAL -->
+<!-- INFO TOAST -->
+<div class="booking-toast" id="infoToast">
+  <div class="booking-toast-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+    </svg>
+  </div>
+  <div>
+    <div class="booking-toast-text" id="toastText"></div>
+    <div class="booking-toast-sub" id="toastSub"></div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">&times;</button>
     <h2>Reserve Your Seat</h2>
     <p>Lock in your spot for this Monday's Business Overview at 8 PM EST.</p>
-    <a class="cta-btn" href="https://calendly.com/YOUR-LINK-HERE" target="_blank" rel="noopener">Book Your Spot Now</a>
-    <p class="fine">Free &middot; No obligation &middot; Limited to 50 spots</p>
+    <iframe src="https://api.leadconnectorhq.com/widget/booking/BicWKsUongOgedn4wt2c" scrolling="no" id="BicWKsUongOgedn4wt2c_1772901533772"></iframe>
+    <script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
   </div>
 </div>
 
@@ -1258,6 +1399,46 @@
     document.getElementById('crm-leads').textContent = l;
     document.getElementById('crm-revenue').textContent = f;
   }, 4000);
+
+  // Proof video toggle
+  function toggleProofVideo(wrap) {
+    const video = wrap.querySelector('video');
+    const playBtn = wrap.querySelector('.proof-video-play');
+    if (video.paused) {
+      video.play();
+      playBtn.classList.add('hidden');
+    } else {
+      video.pause();
+      playBtn.classList.remove('hidden');
+    }
+    video.addEventListener('ended', () => {
+      playBtn.classList.remove('hidden');
+    }, { once: true });
+  }
+
+  // Info toasts
+  (function() {
+    const toast = document.getElementById('infoToast');
+    const textEl = document.getElementById('toastText');
+    const subEl = document.getElementById('toastSub');
+
+    function showInfo(text, sub) {
+      textEl.textContent = text;
+      subEl.textContent = sub;
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 5000);
+    }
+
+    setTimeout(() => showInfo(
+      'New agents are accepted on a limited rolling basis',
+      'Onboarding spots fill up quickly'
+    ), 30000);
+
+    setTimeout(() => showInfo(
+      'Apply early to improve your chances of getting a spot',
+      'Register for this Monday\u2019s overview'
+    ), 60000);
+  })();
 </script>
 </body>
 </html>
