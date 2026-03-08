@@ -891,6 +891,33 @@
     .timed-popup p { color: var(--text-secondary); font-size: .95rem; margin-bottom: 1.5rem; line-height: 1.6; }
     .timed-popup .cta-btn { width: 100%; text-align: center; display: block; }
 
+    /* ── SPLASH INTRO ── */
+    .splash {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--gray-900);
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      transition: opacity .6s ease, visibility .6s;
+    }
+    .splash.fade-out { opacity: 0; visibility: hidden; }
+    .splash-logo {
+      font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: -.02em;
+      opacity: 0; transform: translateY(12px);
+      animation: splash-up .6s ease .2s forwards;
+    }
+    .splash-logo span { color: var(--blue-vibrant); }
+    .splash-line {
+      width: 48px; height: 2px; background: var(--blue-vibrant);
+      margin-top: 1rem; border-radius: 2px;
+      opacity: 0; transform: scaleX(0);
+      animation: splash-line .5s ease .5s forwards;
+    }
+    @keyframes splash-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes splash-line {
+      to { opacity: 1; transform: scaleX(1); }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .announcement-bar { gap: .4rem; padding: .6rem .5rem; }
@@ -919,6 +946,12 @@
   </style>
 </head>
 <body>
+
+<!-- SPLASH INTRO -->
+<div class="splash" id="splash">
+  <div class="splash-logo">Kairos <span>Financial</span></div>
+  <div class="splash-line"></div>
+</div>
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement-bar">
@@ -1375,6 +1408,13 @@
 </div>
 
 <script>
+  // Splash intro - fade out after 1.4s
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    splash.classList.add('fade-out');
+    setTimeout(() => splash.remove(), 600);
+  }, 1400);
+
   // Countdown
   function getNextTarget() {
     const now = new Date();
